@@ -13,7 +13,9 @@ namespace Task_2
             string s = Console.ReadLine();
 
             int n = int.Parse(s.Split(' ')[0]);
-            int k = int.Parse(s.Split(' ')[1]);
+            int k = int.Parse(s.Split(' ')[1]); 
+            Random rnd = new Random();
+
             Message[] MessageArray = new Message[n+1];
 
             s = Console.ReadLine();
@@ -25,6 +27,8 @@ namespace Task_2
                 MessageArray[i] = new Message(MessageArray[j], i, j, k);
             }
 
+            s = "";
+            sArray = new string[n + 1];
 
             for (int i = 1; i <= n-k; i++)
             {
@@ -34,7 +38,7 @@ namespace Task_2
                 else
                     MessageArray[i].S = MessageArray[i].PreviousElement.S + i - j;
 
-                Console.Write(MessageArray[i].S + " ");
+                sArray[i] = MessageArray[i].S + " ";
             }
             for (int i = n - k + 1; i <= n; i++)
             {
@@ -46,10 +50,11 @@ namespace Task_2
                 else
                     MessageArray[i].S = MessageArray[i].PreviousElement.S + n - (j + k);
 
-                Console.Write(MessageArray[i].S + " ");
+                sArray[i] = MessageArray[i].S + " ";
             }
 
-            Console.Read();
+            Console.WriteLine(string.Concat(sArray));
+            //Console.Read();
         }
     }
 }
